@@ -113,7 +113,7 @@ const parent = {
 };
 
 const sayName = function() {
-    return `My name is ${this.name}`;
+    return `My name is ${this.name}`; // only works using .call()
 };
 
 const child = parent.child;
