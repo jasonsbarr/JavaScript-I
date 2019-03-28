@@ -103,12 +103,17 @@ let BMWAndAudi = [];
 //         }
 // }
 let i = 0;
-while (i != -1) {
+while (i > -1) {
     let snobbyCarIndex = inventory.findIndex(car => {
-        return car.car_make === "BMW" || car.car_make === "Audi"
+        return car.car_make === "BMW" || car.car_make === "Audi";
     });
-    
-    BMWAndAudi.push(inventory.splice(snobbyCarIndex, 1)[0]);
+    console.log(snobbyCarIndex);
+    console.log(inventory[snobbyCarIndex]);
+
+    if (snobbyCarIndex > -1) {
+        BMWAndAudi.push(inventory.splice(snobbyCarIndex, 1)[0]);
+    }
+
     i = snobbyCarIndex;
 }
 console.log(JSON.stringify(BMWAndAudi));
