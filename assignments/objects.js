@@ -100,14 +100,23 @@ console.log(antonietta.multiplyNums(3, 4));
 const parent = {
     name: "Susan",
     age: 70,
+    speak: function() {
+      console.log(sayName.call(this));
+    },
 
     child: {
         name: "George",
         age: 50,
+        speak: function() {
+          console.log(sayName.call(this));
+        },
     
         grandchild: {
             name: "Sam",
             age: 30,
+            speak: function () {
+              console.log(sayName.call(this));
+            },
         }
     }
 };
@@ -116,23 +125,21 @@ const sayName = function() {
     return `My name is ${this.name}`; // only works using .call()
 };
 
-const child = parent.child;
-const grandchild = child.grandchild;
-
 // Log the parent object's name
 console.log(parent.name);
 
+
 // Log the child's age
-console.log(child.age);
+console.log(parent.child.age);
 
 // Log the name and age of the grandchild
-console.log(grandchild.name, grandchild.age);
+console.log(`I'm ${parent.child.grandchild.name} and I am ${parent.child.grandchild.age}`);
 
 // Have the parent speak
-console.log(sayName.call(parent))
+parent.speak();
 
 // Have the child speak
-console.log(sayName.call(child));
+parent.child.speak();
 
 // Have the grandchild speak
-console.log(sayName.call(grandchild));
+parent.child.grandchild.speak();
